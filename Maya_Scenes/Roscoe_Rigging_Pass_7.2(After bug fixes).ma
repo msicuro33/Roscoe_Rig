@@ -1,6 +1,6 @@
 //Maya ASCII 2018 scene
-//Name: Roscoe_Rigging_Pass_7.1(After moving the pivots back into place).ma
-//Last modified: Sun, Dec 15, 2019 07:03:05 PM
+//Name: Roscoe_Rigging_Pass_7.2(After bug fixes).ma
+//Last modified: Sun, Dec 15, 2019 09:40:39 PM
 //Codeset: 1252
 requires maya "2018";
 requires -nodeType "FurGlobals" -nodeType "FurDescription" "Fur" "2018";
@@ -49246,18 +49246,18 @@ createNode camera -n "rightShape3" -p "right2";
 	setAttr ".o" yes;
 createNode transform -n "persp2";
 	rename -uid "F7154407-4EF7-2E82-945C-C293F0611F8E";
-	setAttr ".t" -type "double3" 287.20505253229402 117.3695043346745 65.673107685748164 ;
-	setAttr ".r" -type "double3" -15.938352729537245 81.799999999998775 1.1149752714375578e-14 ;
+	setAttr ".t" -type "double3" 161.31165533553721 65.137129501682423 112.3157277709757 ;
+	setAttr ".r" -type "double3" -14.738352729536199 49.799999999998896 0 ;
 createNode camera -n "perspShape3" -p "persp2";
 	rename -uid "80326688-4909-E414-B71F-08B075CD4370";
 	setAttr -k off ".v";
 	setAttr ".rnd" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 294.72617323997019;
+	setAttr ".coi" 174.36956710305711;
 	setAttr ".imn" -type "string" "persp2";
 	setAttr ".den" -type "string" "persp2_depth";
 	setAttr ".man" -type "string" "persp2_mask";
-	setAttr ".tp" -type "double3" 14.351536455807926 5.7533329080019513 33.634273519969376 ;
+	setAttr ".tp" -type "double3" 13.676899909973145 4.7526798248291016 44.532501220703125 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -n "left_backLeg_IK_CTRL_zeroNode";
 	rename -uid "ED10F02E-4B85-2644-B168-F6BB30A904DE";
@@ -49604,11 +49604,11 @@ createNode nurbsCurve -n "right_backToe_IK_CTRLShape" -p "right_backToe_IK_CTRL"
 		5 0 -5
 		5 0 5
 		;
-createNode transform -n "left_bakLeg_IK_poleVector_Parent";
+createNode transform -n "left_backLeg_IK_poleVector_Parent";
 	rename -uid "D34C50B1-4BED-3E68-5D74-6CBE61143BD1";
 	setAttr ".ro" 4;
 createNode pointConstraint -n "left_bakLeg_IK_poleVector_Parent_pointConstraint1" 
-		-p "left_bakLeg_IK_poleVector_Parent";
+		-p "left_backLeg_IK_poleVector_Parent";
 	rename -uid "37095099-48D8-7CE9-74CA-2BAFE2DF0F16";
 	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "left_backLeg_IK_CTRLW0" -dv 1 -min 
 		0 -at "double";
@@ -49626,7 +49626,7 @@ createNode pointConstraint -n "left_bakLeg_IK_poleVector_Parent_pointConstraint1
 	setAttr ".erp" yes;
 	setAttr ".rst" -type "double3" 15.319740295410156 8.6084060668945313 -53.029678344726563 ;
 	setAttr -k on ".w0";
-createNode transform -n "left_backLeg_poleVector_zeroNode" -p "left_bakLeg_IK_poleVector_Parent";
+createNode transform -n "left_backLeg_poleVector_zeroNode" -p "left_backLeg_IK_poleVector_Parent";
 	rename -uid "DB5B7E7E-432A-0480-38EC-68A99DB80B4D";
 	setAttr ".t" -type "double3" 0 34.058625216282685 35.97779451451887 ;
 createNode transform -n "left_backLeg_poleVector" -p "left_backLeg_poleVector_zeroNode";
@@ -49894,9 +49894,29 @@ createNode ikEffector -n "effector6" -p "left_scapula_FK_CTRL";
 createNode ikHandle -n "left_arm_IK_PlaneDriver_ikHandle";
 	rename -uid "E9A22548-4CC0-8E55-DF9D-79A094DDB2CA";
 	setAttr ".roc" yes;
+createNode pointConstraint -n "left_arm_IK_PlaneDriver_ikHandle_pointConstraint1" 
+		-p "left_arm_IK_PlaneDriver_ikHandle";
+	rename -uid "7960C843-443F-559C-0380-11AE069833DD";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "left_humerus_FK_CTRLW0" -dv 1 -min 
+		0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".o" -type "double3" -8.5272130689872938e-08 -54.941275730996423 -5.4606721438311538 ;
+	setAttr ".rst" -type "double3" 13.676899914727871 14.501282170508077 30.545788121844431 ;
+	setAttr -k on ".w0";
 createNode poleVectorConstraint -n "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1" 
 		-p "left_arm_IK_PlaneDriver_ikHandle";
-	rename -uid "F583F0A7-4E4F-91B8-AE19-ABAA02EEBF61";
+	rename -uid "7B5D9EAF-4CB6-836C-F8BF-ABB7B2EF1754";
 	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "left_Arm_IK_poleVectorW0" -dv 1 -min 
 		0 -at "double";
 	setAttr -k on ".nds";
@@ -49912,26 +49932,6 @@ createNode poleVectorConstraint -n "left_arm_IK_PlaneDriver_ikHandle_poleVectorC
 	setAttr -k off ".sz";
 	setAttr ".erp" yes;
 	setAttr ".rst" -type "double3" 1.6428403854370099 44.856591951638308 -28.907735720376088 ;
-	setAttr -k on ".w0";
-createNode pointConstraint -n "left_arm_IK_PlaneDriver_ikHandle_pointConstraint1" 
-		-p "left_arm_IK_PlaneDriver_ikHandle";
-	rename -uid "363F3BFF-4170-438F-AE79-04AA83ADAFB7";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "left_humerus_FK_CTRLW0" -dv 1 -min 
-		0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".o" -type "double3" -8.5272130689872938e-08 -54.941275730996423 -5.4606721438311574 ;
-	setAttr ".rst" -type "double3" 13.676899914727871 14.501282170508077 30.545788121844428 ;
 	setAttr -k on ".w0";
 createNode transform -n "left_scapula_IK_CTRL_zeroNode";
 	rename -uid "62F72642-4609-B6B4-07A4-12A01FE91E9B";
@@ -50015,10 +50015,10 @@ createNode pointConstraint -n "left_Arm_IK_poleVector_Parent_pointConstraint1" -
 	setAttr ".o" -type "double3" 1.6428403854370117 10.797966735355615 -64.885530234894958 ;
 	setAttr ".rst" -type "double3" 15.319740295410156 15.350586669437646 -35.351730109772888 ;
 	setAttr -k on ".w0";
-createNode transform -n "main_fronToe_IK_CTRL1";
+createNode transform -n "main_frontToe_IK_CTRL1";
 	rename -uid "DFBEACE9-45E4-303C-F859-31A796DB91C8";
 	setAttr ".t" -type "double3" 0 0 58.96438105866509 ;
-createNode nurbsCurve -n "main_fronToe_IK_CTRL1Shape" -p "main_fronToe_IK_CTRL1";
+createNode nurbsCurve -n "main_frontToe_IK_CTRL1Shape" -p "main_frontToe_IK_CTRL1";
 	rename -uid "0F28A3BE-49A9-F603-93FB-C68F7DB71582";
 	setAttr -k off ".v";
 	setAttr ".cc" -type "nurbsCurve" 
@@ -50031,7 +50031,7 @@ createNode nurbsCurve -n "main_fronToe_IK_CTRL1Shape" -p "main_fronToe_IK_CTRL1"
 		24.17713994183303 0 -6.619970024935121
 		24.17713994183303 0 6.619970024935121
 		;
-createNode transform -n "left_frontToe_IK_CTRL_zeroNode" -p "main_fronToe_IK_CTRL1";
+createNode transform -n "left_frontToe_IK_CTRL_zeroNode" -p "main_frontToe_IK_CTRL1";
 	rename -uid "E206D8EA-4D4E-8502-E171-188559768B9B";
 	setAttr ".t" -type "double3" 15.899603539950196 0 0 ;
 createNode transform -n "left_frontToe_IK_CTRL" -p "left_frontToe_IK_CTRL_zeroNode";
@@ -50051,10 +50051,11 @@ createNode nurbsCurve -n "left_frontToe_IK_CTRLShape" -p "left_frontToe_IK_CTRL"
 		;
 createNode ikHandle -n "left_fingertip_ikHandle" -p "left_frontToe_IK_CTRL";
 	rename -uid "E8FFCE81-48CF-6D56-A6BF-FE9D8F78AEB2";
-	setAttr ".t" -type "double3" -2.222703539950194 4.7526800162483127 -14.431879840515151 ;
+	setAttr ".mntl" -type "double3" -1 4.75 -1 ;
+	setAttr ".mxtl" -type "double3" 1 4.75 1 ;
+	setAttr ".mtye" yes;
 	setAttr ".mnrl" -type "double3" -45 0 0 ;
 	setAttr ".mxrl" -type "double3" 45 0 0 ;
-	setAttr ".mrye" yes;
 	setAttr ".twi" -90;
 	setAttr ".roc" yes;
 createNode poleVectorConstraint -n "left_fingertip_ikHandle_poleVectorConstraint1" 
@@ -50076,7 +50077,26 @@ createNode poleVectorConstraint -n "left_fingertip_ikHandle_poleVectorConstraint
 	setAttr ".erp" yes;
 	setAttr ".rst" -type "double3" -9.0026851751190407e-08 9.0935074483689835 7.0625379310753758 ;
 	setAttr -k on ".w0";
-createNode transform -n "right_frontToe_IK_CTRL_zeroNode" -p "main_fronToe_IK_CTRL1";
+createNode pointConstraint -n "left_fingertip_ikHandle_pointConstraint1" -p "left_fingertip_ikHandle";
+	rename -uid "0E894AD8-4AA5-3210-859F-9D85B266129B";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "left_frontToe_IK_MarkerW0" -dv 1 
+		-min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".o" -type "double3" 9.0026857080260925e-08 1.9141921114851357e-07 -2.5531861069794104e-09 ;
+	setAttr ".rst" -type "double3" -2.222703539950194 4.7526800162483127 -14.431879840515151 ;
+	setAttr -k on ".w0";
+createNode transform -n "right_frontToe_IK_CTRL_zeroNode" -p "main_frontToe_IK_CTRL1";
 	rename -uid "F93128CF-477C-A347-54A0-B3B8BCD36D3E";
 	setAttr ".t" -type "double3" -15.9 0 0 ;
 createNode transform -n "right_frontToe_IK_CTRL" -p "right_frontToe_IK_CTRL_zeroNode";
@@ -50164,7 +50184,7 @@ createNode transform -n "left_arm_fingertip_pivot" -p "left_arm_ball_pivot";
 createNode transform -n "left_arm_toeLift_pivot" -p "left_arm_fingertip_pivot";
 	rename -uid "342630CA-4B02-1101-0E3C-AF9B9DA2D94D";
 	setAttr ".t" -type "double3" -0.33251103533899951 4.3136141591725465 -10.066212428487297 ;
-createNode transform -n "left_arm_IK_Marker" -p "left_arm_toeLift_pivot";
+createNode transform -n "left_frontToe_IK_Marker" -p "left_arm_toeLift_pivot";
 	rename -uid "0446C8CA-479C-19CA-FFFE-1D8A2C437E15";
 	setAttr ".t" -type "double3" 0 0.20005989074707031 14.998701095581055 ;
 createNode transform -n "left_arm_poleVector_Marker" -p "left_arm_toeLift_pivot";
@@ -50180,7 +50200,7 @@ createNode joint -n "left_arm_IK_PlaneDriver" -p "left_arm_IK_PlaneDriver_zeroNo
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
 	setAttr -l on ".tz";
-	setAttr ".r" -type "double3" 1.9867131804657901e-08 1.3628695324151532e-07 16.587672342887242 ;
+	setAttr ".r" -type "double3" 0 1.8486974086006694e-14 16.587672342887213 ;
 	setAttr -l on ".rx";
 	setAttr -l on ".ry";
 	setAttr -l on ".rz";
@@ -50210,7 +50230,7 @@ createNode ikHandle -n "left_arm_ikHandle" -p "WristPivot";
 	setAttr ".t" -type "double3" 10.426115047188397 0.14600863781854656 -1.1292684121144703e-07 ;
 	setAttr ".r" -type "double3" 117.06554546123911 89.999999730801605 0 ;
 	setAttr ".s" -type "double3" 1 1.0000000000000004 1.0000000000000004 ;
-	setAttr ".pv" -type "double3" 1.9957756650876353 2.5013755205175006 -4.2664444933549634e-08 ;
+	setAttr ".pv" -type "double3" 1.9957756650876353 2.5013755205175006 -4.2664444120315955e-08 ;
 	setAttr ".roc" yes;
 createNode ikEffector -n "effector10" -p "left_arm_IK_PlaneDriver";
 	rename -uid "46A7D3C7-4D05-7F83-FE17-B18AACDD5679";
@@ -50550,7 +50570,7 @@ createNode FurGlobals -n "defaultFurGlobals";
 	addAttr -s false -ci true -sn "cb" -ln "callback" -at "message";
 	addAttr -ci true -h true -sn "fgrf" -ln "furGlobalReference" -min 0 -max 1 -at "bool";
 	setAttr ".av" 2;
-	setAttr ".rep" -type "string" "renderData/fur/furEqualMap/Roscoe_Rigging_Pass_7.1(After moving the pivots back into place)";
+	setAttr ".rep" -type "string" "renderData/fur/furEqualMap/Roscoe_Rigging_Pass_7.2(After bug fixes)";
 	setAttr ".pjl" -type "string" "C:/Users/Mattia Pascal/Documents/maya/projects/default";
 createNode file -n "file2";
 	rename -uid "2D221FDE-4D21-B86B-78B3-239B5E1B7F24";
@@ -51848,7 +51868,7 @@ createNode layeredTexture -n "greasePencilTexture1";
 	setAttr ".cs[1].bm" 1;
 createNode file -n "greasePencilFile1";
 	rename -uid "C0ACA4FF-4597-4BAA-539B-FA8A1B20B8AB";
-	setAttr ".ftn" -type "string" "C:/Users/Mattia Pascal/Documents/maya/projects/default//sourceimages/3dPaintTextures/Roscoe_Rigging_Pass_7.1(After moving the pivots back into place)/side_1.png";
+	setAttr ".ftn" -type "string" "C:/Users/Mattia Pascal/Documents/maya/projects/default//sourceimages/3dPaintTextures/Roscoe_Rigging_Pass_7.2(After bug fixes)/side_1.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "greasePencilPlace2dTexture1";
 	rename -uid "EAF52FAC-4BD2-F885-4B73-AAAF1DB91855";
@@ -65793,7 +65813,7 @@ createNode layeredTexture -n "greasePencilTexture2";
 	setAttr ".cs[0].bm" 1;
 createNode file -n "greasePencilFile3";
 	rename -uid "572B2618-44B4-A9CD-96C6-D99B9CC33DEA";
-	setAttr ".ftn" -type "string" "C:/Users/Mattia Pascal/Documents/maya/projects/default//sourceimages/3dPaintTextures/Roscoe_Rigging_Pass_7.1(After moving the pivots back into place)/right1_0_1.png";
+	setAttr ".ftn" -type "string" "C:/Users/Mattia Pascal/Documents/maya/projects/default//sourceimages/3dPaintTextures/Roscoe_Rigging_Pass_7.2(After bug fixes)/right1_0_1.png";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "greasePencilPlace2dTexture3";
 	rename -uid "58A8CB47-44C7-FD3F-0FF4-ACA15C71E33A";
@@ -65932,20 +65952,41 @@ createNode unitConversion -n "unitConversion8";
 	rename -uid "A1998202-4F7D-E98D-1E19-94A947BBF40C";
 	setAttr ".cf" 0.017453292519943295;
 createNode nodeGraphEditorInfo -n "MayaNodeEditorSavedTabsInfo";
-	rename -uid "587DF55B-4FCA-CDF9-6F11-ECB823B4DC6C";
+	rename -uid "74AAEB76-466C-8C2C-EAEC-C9B0E72702D6";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" 746.06677838553628 -1625.8683020035207 ;
-	setAttr ".tgi[0].vh" -type "double2" 1893.1255697408155 -1043.5153771616099 ;
-	setAttr -s 3 ".tgi[0].ni";
-	setAttr ".tgi[0].ni[0].x" 1189.579833984375;
-	setAttr ".tgi[0].ni[0].y" -1453.9495849609375;
+	setAttr ".tgi[0].vl" -type "double2" -1560.6875829171158 -2335.9776369029782 ;
+	setAttr ".tgi[0].vh" -type "double2" 903.51365612756103 -1084.9216232341421 ;
+	setAttr -s 10 ".tgi[0].ni";
+	setAttr ".tgi[0].ni[0].x" 535.71429443359375;
+	setAttr ".tgi[0].ni[0].y" -1054.2857666015625;
 	setAttr ".tgi[0].ni[0].nvs" 18304;
-	setAttr ".tgi[0].ni[1].x" 1462.857177734375;
-	setAttr ".tgi[0].ni[1].y" -1308.5714111328125;
-	setAttr ".tgi[0].ni[1].nvs" 18304;
-	setAttr ".tgi[0].ni[2].x" 982.85711669921875;
-	setAttr ".tgi[0].ni[2].y" -1308.5714111328125;
-	setAttr ".tgi[0].ni[2].nvs" 18304;
+	setAttr ".tgi[0].ni[1].x" -287.69058227539063;
+	setAttr ".tgi[0].ni[1].y" -1116.6209716796875;
+	setAttr ".tgi[0].ni[1].nvs" 18306;
+	setAttr ".tgi[0].ni[2].x" 88.571426391601563;
+	setAttr ".tgi[0].ni[2].y" -1191.4285888671875;
+	setAttr ".tgi[0].ni[2].nvs" 18306;
+	setAttr ".tgi[0].ni[3].x" 535.71429443359375;
+	setAttr ".tgi[0].ni[3].y" -1155.7142333984375;
+	setAttr ".tgi[0].ni[3].nvs" 18304;
+	setAttr ".tgi[0].ni[4].x" 535.71429443359375;
+	setAttr ".tgi[0].ni[4].y" -1804.2857666015625;
+	setAttr ".tgi[0].ni[4].nvs" 18304;
+	setAttr ".tgi[0].ni[5].x" 88.571426391601563;
+	setAttr ".tgi[0].ni[5].y" -1820;
+	setAttr ".tgi[0].ni[5].nvs" 18304;
+	setAttr ".tgi[0].ni[6].x" -652.60223388671875;
+	setAttr ".tgi[0].ni[6].y" -1652.48046875;
+	setAttr ".tgi[0].ni[6].nvs" 18304;
+	setAttr ".tgi[0].ni[7].x" 535.71429443359375;
+	setAttr ".tgi[0].ni[7].y" -1905.7142333984375;
+	setAttr ".tgi[0].ni[7].nvs" 18304;
+	setAttr ".tgi[0].ni[8].x" 535.71429443359375;
+	setAttr ".tgi[0].ni[8].y" -2007.142822265625;
+	setAttr ".tgi[0].ni[8].nvs" 18304;
+	setAttr ".tgi[0].ni[9].x" 535.71429443359375;
+	setAttr ".tgi[0].ni[9].y" -2137.142822265625;
+	setAttr ".tgi[0].ni[9].nvs" 18304;
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -cb on ".ihi";
@@ -66703,19 +66744,19 @@ connectAttr "left_backToe_poleVector_Marker.pm" "left_backLeg_toe_ikHandle_poleV
 		;
 connectAttr "left_backLeg_toe_ikHandle_poleVectorConstraint1.w0" "left_backLeg_toe_ikHandle_poleVectorConstraint1.tg[0].tw"
 		;
-connectAttr "left_bakLeg_IK_poleVector_Parent_pointConstraint1.ctx" "left_bakLeg_IK_poleVector_Parent.tx"
+connectAttr "left_bakLeg_IK_poleVector_Parent_pointConstraint1.ctx" "left_backLeg_IK_poleVector_Parent.tx"
 		;
-connectAttr "left_bakLeg_IK_poleVector_Parent_pointConstraint1.cty" "left_bakLeg_IK_poleVector_Parent.ty"
+connectAttr "left_bakLeg_IK_poleVector_Parent_pointConstraint1.cty" "left_backLeg_IK_poleVector_Parent.ty"
 		;
-connectAttr "left_bakLeg_IK_poleVector_Parent_pointConstraint1.ctz" "left_bakLeg_IK_poleVector_Parent.tz"
+connectAttr "left_bakLeg_IK_poleVector_Parent_pointConstraint1.ctz" "left_backLeg_IK_poleVector_Parent.tz"
 		;
-connectAttr "|left_backLeg_IK_CTRL_zeroNode|left_backLeg_IK_CTRL.ry" "left_bakLeg_IK_poleVector_Parent.ry"
+connectAttr "|left_backLeg_IK_CTRL_zeroNode|left_backLeg_IK_CTRL.ry" "left_backLeg_IK_poleVector_Parent.ry"
 		;
-connectAttr "left_bakLeg_IK_poleVector_Parent.pim" "left_bakLeg_IK_poleVector_Parent_pointConstraint1.cpim"
+connectAttr "left_backLeg_IK_poleVector_Parent.pim" "left_bakLeg_IK_poleVector_Parent_pointConstraint1.cpim"
 		;
-connectAttr "left_bakLeg_IK_poleVector_Parent.rp" "left_bakLeg_IK_poleVector_Parent_pointConstraint1.crp"
+connectAttr "left_backLeg_IK_poleVector_Parent.rp" "left_bakLeg_IK_poleVector_Parent_pointConstraint1.crp"
 		;
-connectAttr "left_bakLeg_IK_poleVector_Parent.rpt" "left_bakLeg_IK_poleVector_Parent_pointConstraint1.crt"
+connectAttr "left_backLeg_IK_poleVector_Parent.rpt" "left_bakLeg_IK_poleVector_Parent_pointConstraint1.crt"
 		;
 connectAttr "|left_backLeg_IK_CTRL_zeroNode|left_backLeg_IK_CTRL.t" "left_bakLeg_IK_poleVector_Parent_pointConstraint1.tg[0].tt"
 		;
@@ -66760,22 +66801,6 @@ connectAttr "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.cty" "left_a
 		;
 connectAttr "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.ctz" "left_arm_IK_PlaneDriver_ikHandle.pvz"
 		;
-connectAttr "left_arm_IK_PlaneDriver_ikHandle.pim" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.cpim"
-		;
-connectAttr "left_arm_IK_PlaneDriver.pm" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.ps"
-		;
-connectAttr "left_arm_IK_PlaneDriver.t" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.crp"
-		;
-connectAttr "left_Arm_IK_poleVector.t" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.tg[0].tt"
-		;
-connectAttr "left_Arm_IK_poleVector.rp" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.tg[0].trp"
-		;
-connectAttr "left_Arm_IK_poleVector.rpt" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.tg[0].trt"
-		;
-connectAttr "left_Arm_IK_poleVector.pm" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.tg[0].tpm"
-		;
-connectAttr "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.w0" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.tg[0].tw"
-		;
 connectAttr "left_arm_IK_PlaneDriver_ikHandle.pim" "left_arm_IK_PlaneDriver_ikHandle_pointConstraint1.cpim"
 		;
 connectAttr "left_arm_IK_PlaneDriver_ikHandle.rp" "left_arm_IK_PlaneDriver_ikHandle_pointConstraint1.crp"
@@ -66791,6 +66816,22 @@ connectAttr "left_humerus_FK_CTRL.rpt" "left_arm_IK_PlaneDriver_ikHandle_pointCo
 connectAttr "left_humerus_FK_CTRL.pm" "left_arm_IK_PlaneDriver_ikHandle_pointConstraint1.tg[0].tpm"
 		;
 connectAttr "left_arm_IK_PlaneDriver_ikHandle_pointConstraint1.w0" "left_arm_IK_PlaneDriver_ikHandle_pointConstraint1.tg[0].tw"
+		;
+connectAttr "left_arm_IK_PlaneDriver_ikHandle.pim" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.cpim"
+		;
+connectAttr "left_arm_IK_PlaneDriver.pm" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.ps"
+		;
+connectAttr "left_arm_IK_PlaneDriver.t" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.crp"
+		;
+connectAttr "left_Arm_IK_poleVector.t" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.tg[0].tt"
+		;
+connectAttr "left_Arm_IK_poleVector.rp" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.tg[0].trp"
+		;
+connectAttr "left_Arm_IK_poleVector.rpt" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.tg[0].trt"
+		;
+connectAttr "left_Arm_IK_poleVector.pm" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.tg[0].tpm"
+		;
+connectAttr "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.w0" "left_arm_IK_PlaneDriver_ikHandle_poleVectorConstraint1.tg[0].tw"
 		;
 connectAttr "makeNurbCircle1.oc" "left_scapula_IK_CTRLShape.cr";
 connectAttr "left_scapula_FK_CTRL.msg" "left_scapula_ikHandle.hsj";
@@ -66833,6 +66874,12 @@ connectAttr "left_fingertip_ikHandle_poleVectorConstraint1.cty" "left_fingertip_
 		;
 connectAttr "left_fingertip_ikHandle_poleVectorConstraint1.ctz" "left_fingertip_ikHandle.pvz"
 		;
+connectAttr "left_fingertip_ikHandle_pointConstraint1.ctx" "left_fingertip_ikHandle.tx"
+		;
+connectAttr "left_fingertip_ikHandle_pointConstraint1.cty" "left_fingertip_ikHandle.ty"
+		;
+connectAttr "left_fingertip_ikHandle_pointConstraint1.ctz" "left_fingertip_ikHandle.tz"
+		;
 connectAttr "left_fingertip_ikHandle.pim" "left_fingertip_ikHandle_poleVectorConstraint1.cpim"
 		;
 connectAttr "left_paw_FK_CTRL.pm" "left_fingertip_ikHandle_poleVectorConstraint1.ps"
@@ -66848,6 +66895,22 @@ connectAttr "left_arm_poleVector_Marker.rpt" "left_fingertip_ikHandle_poleVector
 connectAttr "left_arm_poleVector_Marker.pm" "left_fingertip_ikHandle_poleVectorConstraint1.tg[0].tpm"
 		;
 connectAttr "left_fingertip_ikHandle_poleVectorConstraint1.w0" "left_fingertip_ikHandle_poleVectorConstraint1.tg[0].tw"
+		;
+connectAttr "left_fingertip_ikHandle.pim" "left_fingertip_ikHandle_pointConstraint1.cpim"
+		;
+connectAttr "left_fingertip_ikHandle.rp" "left_fingertip_ikHandle_pointConstraint1.crp"
+		;
+connectAttr "left_fingertip_ikHandle.rpt" "left_fingertip_ikHandle_pointConstraint1.crt"
+		;
+connectAttr "left_frontToe_IK_Marker.t" "left_fingertip_ikHandle_pointConstraint1.tg[0].tt"
+		;
+connectAttr "left_frontToe_IK_Marker.rp" "left_fingertip_ikHandle_pointConstraint1.tg[0].trp"
+		;
+connectAttr "left_frontToe_IK_Marker.rpt" "left_fingertip_ikHandle_pointConstraint1.tg[0].trt"
+		;
+connectAttr "left_frontToe_IK_Marker.pm" "left_fingertip_ikHandle_pointConstraint1.tg[0].tpm"
+		;
+connectAttr "left_fingertip_ikHandle_pointConstraint1.w0" "left_fingertip_ikHandle_pointConstraint1.tg[0].tw"
 		;
 connectAttr "left_arm_IK_PlaneDriver.s" "left_arm_IK_PlaneDriver_end.is";
 connectAttr "unitConversion8.o" "WristPivot.rz";
@@ -66872,13 +66935,13 @@ connectAttr "left_wrist_ikHandle.pim" "left_wrist_ikHandle_pointConstraint1.cpim
 connectAttr "left_wrist_ikHandle.rp" "left_wrist_ikHandle_pointConstraint1.crp";
 connectAttr "left_wrist_ikHandle.rpt" "left_wrist_ikHandle_pointConstraint1.crt"
 		;
-connectAttr "left_arm_IK_Marker.t" "left_wrist_ikHandle_pointConstraint1.tg[0].tt"
+connectAttr "left_frontToe_IK_Marker.t" "left_wrist_ikHandle_pointConstraint1.tg[0].tt"
 		;
-connectAttr "left_arm_IK_Marker.rp" "left_wrist_ikHandle_pointConstraint1.tg[0].trp"
+connectAttr "left_frontToe_IK_Marker.rp" "left_wrist_ikHandle_pointConstraint1.tg[0].trp"
 		;
-connectAttr "left_arm_IK_Marker.rpt" "left_wrist_ikHandle_pointConstraint1.tg[0].trt"
+connectAttr "left_frontToe_IK_Marker.rpt" "left_wrist_ikHandle_pointConstraint1.tg[0].trt"
 		;
-connectAttr "left_arm_IK_Marker.pm" "left_wrist_ikHandle_pointConstraint1.tg[0].tpm"
+connectAttr "left_frontToe_IK_Marker.pm" "left_wrist_ikHandle_pointConstraint1.tg[0].tpm"
 		;
 connectAttr "left_wrist_ikHandle_pointConstraint1.w0" "left_wrist_ikHandle_pointConstraint1.tg[0].tw"
 		;
@@ -68279,11 +68342,23 @@ connectAttr "|left_backLeg_IK_CTRL_zeroNode|left_backLeg_IK_CTRL.ToeLift" "left_
 		;
 connectAttr "|left_backLeg_IK_CTRL_zeroNode1|left_backLeg_IK_CTRL.Ankle" "unitConversion8.i"
 		;
-connectAttr "left_arm_IK_PlaneDriver_ikHandle_pointConstraint1.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+connectAttr "left_arm_ikHandle.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
 		;
-connectAttr "left_arm_IK_PlaneDriver_ikHandle.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+connectAttr "left_Arm_IK_poleVector_Parent.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
 		;
-connectAttr "left_humerus_FK_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+connectAttr "left_Arm_IK_poleVector_Parent_pointConstraint1.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+		;
+connectAttr "left_wrist_ikHandle.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+		;
+connectAttr "WristPivot.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[4].dn";
+connectAttr "unitConversion8.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[5].dn";
+connectAttr "|left_backLeg_IK_CTRL_zeroNode1|left_backLeg_IK_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
+		;
+connectAttr "left_fingertip_ikHandle.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
+		;
+connectAttr "left_scapula_ikHandle.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
+		;
+connectAttr "|left_backLeg_IK_CTRL_zeroNode1|left_backLeg_IK_CTRL|left_backLeg_IK_CTRLShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
 		;
 connectAttr "blinn1SG.pa" ":renderPartition.st" -na;
 connectAttr "blinn2SG.pa" ":renderPartition.st" -na;
@@ -68398,4 +68473,4 @@ connectAttr "teethShape.iog.og[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "groupId17.msg" ":initialShadingGroup.gn" -na;
 connectAttr "ikRPsolver.msg" ":ikSystem.sol" -na;
 connectAttr "ikSCsolver.msg" ":ikSystem.sol" -na;
-// End of Roscoe_Rigging_Pass_7.1(After moving the pivots back into place).ma
+// End of Roscoe_Rigging_Pass_7.2(After bug fixes).ma
